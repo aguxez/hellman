@@ -1,0 +1,27 @@
+<h3> User count: <%= assigns[:user_count] || "Loading..." %> </h3>
+<h3> Secret is: <%= assigns[:readable_secret] || "Secret not available..." %> </h3>
+
+<%= if assigns[:readable_secret] do %>
+  <.form let={f} for={:chat} phx-submit="create_message">
+    <div class="container">
+      <%= textarea f, :message,
+        id: "chat_box",
+        autofocus: "true",
+        maxlength: "120",
+        wrap: "hard",
+        required: true,
+        placeholder: "Write your message here..."%>
+
+      <%= submit "Send Message", class: "button" %>
+    </div>
+  </.form>
+
+  <hr>
+  <%= for {message, message_time} <- assigns[:messages] do %>
+    <div class="container">
+      <p> <%= message %> </p>
+      <span class="time_right"> <%= message_time %> </span>
+    </div>
+    <hr>
+  <% end %>
+<% end %>

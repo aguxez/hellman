@@ -1,0 +1,15 @@
+<a href="#" phx-click="create_random" class="button">Create Random</a>
+
+<table>
+  <tr>
+    <th>Session ID</th>
+    <th></th>
+  </tr>
+
+  <%= for session <- @sessions do%>
+    <tr>
+      <td><%= session %></td>
+      <td> <%= live_redirect "Join", class: "button", to: Routes.live_path(@socket, HellmanWeb.PageLive.Session, session) %> </td>
+    </tr>
+  <% end %>
+</table>

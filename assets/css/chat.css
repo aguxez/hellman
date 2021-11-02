@@ -1,0 +1,8 @@
+.time_right {
+  float: right;
+  color: #aaa
+}
+
+#chat_box {
+  resize: none;
+}
